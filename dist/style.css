@@ -1,0 +1,72 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3vmax;
+}
+
+body{
+    background-image: linear-gradient(#3498db, #2980b9);
+    background-attachment: fixed;
+}
+
+.input{
+    padding: 1vmax;
+
+    background-color: #3498db;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.results{
+    padding: 1vmax;
+    /* margin: 1vmax; */
+    color: #ecf0f1;
+}
+
+input{
+    color: #ecf0f1;
+    font-family: inherit;    
+    border: none;
+    border-bottom: 0.5px solid #ecf0f1;
+    background: none;
+    font-size: 1em;
+    align-self: center;
+}
+
+input:focus{
+    outline: none;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ecf0f1;
+    opacity: 1; /* Firefox */
+  }
+
+  .fa-search{
+    color: #ecf0f1;
+    cursor: pointer;
+    padding-left: 5vmax;
+  }
+
+  .results{
+      display: grid;
+    grid-gap: 2vmax;
+  }
+
+  .entry{
+      display: grid;
+      grid-template-areas: 
+      "s t i"
+      "s n c";
+      grid-template-columns: 1fr 8fr 8fr;
+      box-shadow: 1px 1px 3px #2980b9;
+  }
+
+.temp{grid-area: t; justify-self: center; font-size: 7vmax;}
+.city{grid-area: n; justify-self: center;}
+.entry>img{grid-area: i; justify-self: center;}
+.condition{grid-area: c; justify-self: center;}
+.toggle{grid-area: s; align-self: center; justify-self: center; color: #2c3e50;}
+.remove{color: #902D41;}
+.save{color: #404E4D;}
