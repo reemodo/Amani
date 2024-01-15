@@ -1,0 +1,35 @@
+[
+    {
+        "userId":"0",
+        "universityName":"Sami shamoon",
+        "date": "2024-4-12",
+        "location":"Rahat",
+        "transportationType":"Car",
+        "capacity":3,
+        "activityType":"fromSchool",
+        "preferredGender":"f",
+        "participants":[]
+    },
+    {
+        "userId":"0",
+        "universityName":"Ben gurion",
+        "date": "2024-2-08",
+        "location":"Arad",
+        "transportationType":"Bus",
+        "capacity":4,
+        "activityType":"toSchool",
+        "preferredGender":"f",
+        "participants":[]
+    },
+    {
+        "userId":"2",
+        "universityName":"Sami shamoon",
+        "date": "2024-3-10",
+        "location":"Arad",
+        "transportationType":"Car",
+        "capacity":3,
+        "activityType":"toSchool",
+        "preferredGender":"un",
+        "participants":[]
+    }
+]
