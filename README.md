@@ -1,5 +1,5 @@
-# full-stack-project-template
-A Basic jQuery, NodeJS &amp; MongoDB project template
+# Amani
+The project is a comprehensive mobile application that enables university students to connect, organize activities, and facilitate meet-ups through a user-friendly interface, integrating both frontend and backend technologies for a seamless user experience.
 
 # Setup
 ```
