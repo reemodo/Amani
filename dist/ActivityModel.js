@@ -1,4 +1,4 @@
-class DataModel {
+class ActivityModel {
     constructor() {
     }
 }
