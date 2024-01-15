@@ -1,7 +1,7 @@
 {
   "name": "weather-full-stack",
   "version": "1.0.0",
-  "description": "",
+  "description": "The project is a comprehensive mobile application that enables university students to connect, organize activities, and facilitate meet-ups through a user-friendly interface, integrating both frontend and backend technologies for a seamless user experience.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -18,5 +18,6 @@
     "moment": "^2.23.0",
     "mongoose": "^5.4.0",
     "request": "^2.88.0"
-  }
+  },
+  "devDependencies": {}
 }
