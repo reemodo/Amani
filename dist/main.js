@@ -1,2 +1,2 @@
-const dataModel = new DataModel()
+const activityModel = new ActivityModel()
 const renderer = new Renderer()
