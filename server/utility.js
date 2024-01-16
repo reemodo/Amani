@@ -16,7 +16,7 @@ const filterActivityField = function(date, transportationType, preferredGender){
 
 
 const filterAllActivityField = function(userId,transportationType, specificGender, date, activityType, location, universityName){
-    const filter = {}
+    const filter = { }
     if(userId){
         filter.userId =  { $ne: userId }
     }
