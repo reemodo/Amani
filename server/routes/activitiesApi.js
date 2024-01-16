@@ -4,6 +4,8 @@ const dbManager = require('../DBManager')
 const User = require('../models/user')
 const Activity = require('../models/activity')
 const activityCollManager = require('../collections-manager/activityCollManager')
+const consts = require('../../config')
+
 router.get('/', async function(req, res) {
     try {
         const activities = await activityCollManager.getActivities()
@@ -35,6 +37,15 @@ router.post('/:userId', async function(req, res){
     }catch (error) {
         res.status(400).send(error)
     }
+})
+
+router.get('/transportations', async function(req, res){
+    try{
+        res.status(200).send(consts.transportations)
+    }catch(err){
+        res.status(400).send(error)
+    }
+
 })
 
 
