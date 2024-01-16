@@ -5,13 +5,36 @@ class ActivityController {
       this.view = view
     }
   
-    showActivities(){
 
+    async filterActivities() {
+        try {
+            let data
+            const filterData = {
+                university: $('#university').val(),
+                transportationType: $('#transportationType').val(),
+                specificGender: $('#specificGender').is(':checked'),
+                date: $('#date').val(),
+                location: $('#location').val(),
+                activityType: $('#activityType').val(),
+            }
+        
+            if (this.isEmpty(filterData)) {
+                data = await this.model.getAllActivities(USER_ID)
+            } else {
+                data = await this.model.filterActivities(USER_ID, filterData)
+            }
+        
+            this.view.renderData(data)
+        } catch (error) {
+            console.error('Error filtering or fetching activities:', error)
+        }
     }
-
-    filterActivities(){
-
+    
+    isEmpty(obj) {
+        return Object.keys(obj).length === 0 && obj.constructor === Object
     }
+    
+
 
     async addActivity() {
         try {

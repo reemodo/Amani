@@ -1,10 +1,22 @@
 class ActivityModel {
 
-    showActivities(){
 
+    static async getAllActivities(userId) {
+        try {
+          const data = await $.get(`/activities/${userId}`)
+          return data
+        } catch (error) {
+          throw error
+        }
     }
-
-    filterActivities(){
+    
+    static async filterActivities(userId, filterData) {
+        try {
+          const data = await $.get(`/activities/${userId}`, filterData)
+          return data
+        } catch (error) {
+          throw error
+        }
 
     }
 
