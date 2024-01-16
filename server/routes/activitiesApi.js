@@ -1,9 +1,19 @@
 const express = require('express')
 const router = express.Router()
 const Item = require('../models/Item')
+const dbManager = require('./server/DBManager')
 
 
-router.get('/city/:city', (req, res) => {
+router.get('/', async function(req, res){
+    try{
+        await dbManager.reGenerate()
+        res.end()
+    }catch(err){
+        console.error(err);
+        throw new Error(`Failed to generate data`);
+        res.status(400).send(err => err)
+    }
+
 })
 
 router.get('/get', (req, res) => {
