@@ -1,4 +1,3 @@
-const USER_ID = 0
 class ActivityController {
     constructor(model, view) {
       this.model = model
@@ -8,7 +7,6 @@ class ActivityController {
 
     async filterActivities() {
         try {
-            let data
             const filterData = {
                 university: $('#university').val(),
                 transportationType: $('#transportationType').val(),
@@ -17,24 +15,13 @@ class ActivityController {
                 location: $('#location').val(),
                 activityType: $('#activityType').val(),
             }
-        
-            if (this.isEmpty(filterData)) {
-                data = await this.model.getAllActivities(USER_ID)
-            } else {
-                data = await this.model.filterActivities(USER_ID, filterData)
-            }
-        
+
+            const data = await this.model.getAllActivities(USER_ID, filterData)
             this.view.renderData(data)
         } catch (error) {
             console.error('Error filtering or fetching activities:', error)
         }
     }
-    
-    isEmpty(obj) {
-        return Object.keys(obj).length === 0 && obj.constructor === Object
-    }
-    
-
 
     async addActivity() {
         try {
@@ -46,22 +33,33 @@ class ActivityController {
             gender: $('#gender').val(),
             activityType: $('#activityType').val(),
           }
-        
-          const data = await this.model.addActivity(USER_ID, activityData)
-          const success = "Your Activity was added, you can see it in My Activities page"
-          this.view.handleSuccess(success)
+          await this.model.addActivity(USER_ID, activityData)
+          this.view.handleSuccess(SUCCESS)
         } catch (error) {
           this.view.handleError(error)
           console.error('Error adding activity:', error)
         }
     }
 
-    showMyActivities(){
+    async showMyActivities() {
+        try {
+            const myActivities = await this.model.getMyActivities(USER_ID)
+            this.view.renderMyActivities(myActivities)
 
+        } catch (error) {
+            console.error('Error fetching user activities:', error)
+        }
     }
+    
 
-    deleteMyActivity(){
-
+    async deleteMyActivity(activityId) {
+        try {
+            await this.model.deleteMyActivity(USER_ID, activityId)
+            this.showMyActivities()
+          
+        } catch (error) {
+          console.error('Error removing activity:', error)
+        }
     }
 
     editMyActivity(){
