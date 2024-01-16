@@ -1,2 +1,3 @@
 const transportations = ["Car","Bus"]
-module.exports ={transportations}
+const currentDate = new Date()
+module.exports ={transportations, currentDate}
