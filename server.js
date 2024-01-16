@@ -1,7 +1,8 @@
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
-const api = require('./server/routes/api')
+const api = require('./server/routes/activitiesApi')
+const dbManager = require('./server/DBManager')
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
