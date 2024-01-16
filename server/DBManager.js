@@ -32,4 +32,5 @@ class DBManager{
         DBManager.generateData()
     }
 }
-module.exports = DBManager
+
+module.exports = DBServer
