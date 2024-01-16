@@ -1,3 +1,5 @@
+const consts = require("../config")
+
 const filterActivityField = function(date, transportationType, preferredGender){
     const updateFields = {}
     
@@ -17,6 +19,9 @@ const filterAllActivityField = function(transportationType, specificGender, date
     const filter = {}
     if(date){
         filter.date = date
+    }
+    else{
+        filter.date = { $gt: consts.currentDate }
     }
     if (transportationType) {
         filter.transportationType = transportationType
