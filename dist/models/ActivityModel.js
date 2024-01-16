@@ -47,8 +47,20 @@ class ActivityModel {
         })
     }
 
-    editMyActivity(){
-        
-    }
+    async editCapacity(userId, activityId, newCapacity) {
+          return editResult = await $.ajax({
+            url: `/activities/${activityId}`,
+            type: 'PATCH',
+            data: { userId, newCapacity },
+            success: function() {
+                return true
+             },
+             message: 'Activity updated successfully',
+           
+             error: function(xhr, status, error) {
+                 console.error(error)
+             }
+          })
+      }
 }
   
