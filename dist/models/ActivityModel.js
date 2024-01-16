@@ -1,13 +1,13 @@
 class ActivityModel {
-
-
     async getAllActivities(userId, filterData) {
         try {
-          const data = await $.get(`/activities/${userId}`)
-          if(isEmpty(filterData)){
-            const data = await $.get(`/activities/${userId}?filterData: ${filterData}` )
+            
+          if(filterData != undefined && !isEmpty(filterData)){
+            return await $.get(`/activities/${userId}?filterData: ${filterData}` )
           }
-          return data
+          else {
+             return await $.get(`/activities/${userId}`)
+          }
         } catch (error) {
           throw error
         }
