@@ -87,10 +87,10 @@ router.get('/DBgenerator', async function(req, res){
 })
 
 
-router.put('/:activityId', async function(req, res){
+router.patch('/:activityId', async function(req, res){
     try{
         const activityId = req.params.activityId
-        const capacity = req.body
+        const capacity = req.body.capacity
         await activityCollManager.updateCapacity(activityId, capacity)
         res.status(200).end()
     }
