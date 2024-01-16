@@ -26,14 +26,22 @@ class ActivityController {
 
     async addActivity() {
         try {
+          const to = $("#toSchool");
+          let transportationType
+          if (to.is(":checked")) {
+            transportationType = "fromSchool"
+          } else{
+            transportationType = "toSchool"
+          }
           const activityData = {
             date: $('#date').val(),
             location: $('#location').val(),
-            transportationType: $('#transportationType').val(),
+            transportationType: transportationType,
             capacity: $('#capacity').val(),
-            gender: $('#gender').val(),
+            gender: $('#gender').is(':checked'),
             activityType: $('#activityType').val(),
           }
+          console.log(activityData.location)
           await this.model.addActivity(USER_ID, activityData)
           this.view.handleSuccess(SUCCESS)
         } catch (error) {

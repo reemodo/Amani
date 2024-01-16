@@ -35,9 +35,13 @@ router.get('/myActivities/:userId', async function(req, res) {
 router.post('/:userId', async function(req, res){
     try{
         const userId = req.params.userId
-        const userUniversityName = await userCollManager.getUserUniversity(userId)
-        const saveMeActivity = {...req.body ,universityName: userUniversityName }
-        const newActivity = await activityCollManager.saveActivity(saveMeActivity)
+        const userData = await userCollManager.getUserUniversityAndGender(userId)
+        let preferredGender = "un"
+        if(req.body.gender === "true"){
+            preferredGender = userData.gender
+        }
+        const saveMeActivity = {...req.body ,universityName: userData.universityName ,preferredGender: preferredGender}
+        await activityCollManager.saveActivity(saveMeActivity)
         res.status(200).end()
     }
     catch (error) {
