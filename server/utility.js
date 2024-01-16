@@ -12,4 +12,27 @@ const filterActivityField = function(date, transportationType, preferredGender){
         }
         return updateFields
 }
-module.exports = {filterActivityField}
+
+const filterAllActivityField = function(transportationType, specificGender, date, activityType, location, universityName){
+    const filter = {}
+    if(date){
+        filter.date = date
+    }
+    if (transportationType) {
+        filter.transportationType = transportationType
+    }
+    if (activityType) {
+        filter.activityType = activityType
+    }
+    if (universityName) {
+        filter.universityName = universityName
+    }
+    if(location){
+        filter.location = location
+    }
+    if (specificGender) {
+        filter.preferredGender = specificGender
+    }
+    return filter
+}
+module.exports = {filterActivityField, filterAllActivityField}
