@@ -1,5 +1,4 @@
 const consts = require("../config")
-
 const filterActivityField = function(date, transportationType, preferredGender){
     const updateFields = {}
     
@@ -14,6 +13,7 @@ const filterActivityField = function(date, transportationType, preferredGender){
         }
         return updateFields
 }
+
 
 const filterAllActivityField = function(userId,transportationType, specificGender, date, activityType, location, universityName){
     const filter = {}
@@ -41,7 +41,7 @@ const filterAllActivityField = function(userId,transportationType, specificGende
     if (specificGender) {
         filter.preferredGender = specificGender
     }
-    //
+    
 
     return filter
 }

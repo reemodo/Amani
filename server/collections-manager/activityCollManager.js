@@ -52,8 +52,8 @@ class activityCollManager{
             return{ success: false, error: "Activity not found" }
         }
     }
-    static async filteredActivities(transportationType, specificGender, date, activityType, location, universityName){
-        const filter = filterAllActivityField(transportationType, specificGender, date, activityType, location, universityName)
+    static async filteredActivities(userId,transportationType, specificGender, date, activityType, location, universityName){
+        const filter = filterAllActivityField(userId,transportationType, specificGender, date, activityType, location, universityName)
         const activities = await Activity.find(filter).sort({ date: 1 })
         return activities
     }

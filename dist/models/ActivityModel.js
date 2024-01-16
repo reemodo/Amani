@@ -1,9 +1,9 @@
 class ActivityModel {
-    async getAllActivities(userId, filterData) {
+    async getAllActivities(userId,filtered, filterData) {
         try {
             
-          if(filterData != undefined && !isEmpty(filterData)){
-            return await $.get(`/activities/${userId}?filterData: ${filterData}` )
+          if(filtered){
+            return await $.get(`/activities/${userId}?${$.param(filterData)}` )
           }
           else {
              return await $.get(`/activities/${userId}`)
