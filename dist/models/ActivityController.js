@@ -49,9 +49,9 @@ class ActivityController {
         
           const data = await this.model.addActivity(USER_ID, activityData)
           const success = "Your Activity was added, you can see it in My Activities page"
-          this.handleSuccess(success)
+          this.view.handleSuccess(success)
         } catch (error) {
-          this.handleError(error)
+          this.view.handleError(error)
           console.error('Error adding activity:', error)
         }
     }

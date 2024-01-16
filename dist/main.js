@@ -1,5 +1,5 @@
 
-const USER_ID = 0
+// const USER_ID = 0
 
 const activityModel = new ActivityModel()
 const renderer = new Renderer()
@@ -12,8 +12,17 @@ const addActivity = function(){
 
 async function init() {
     const allActivities = await activityModel.getAllActivities(USER_ID)
-    renderer.renderData(allActivities)
+    renderer.renderActivities(allActivities)
+    renderer.renderModal({transportation:["Bus","Car"], university:"Harvard"})
+    
 }
-  
+
 init()
+
+
+
+
+
+
+
 

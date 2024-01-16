@@ -15,13 +15,11 @@
       crossorigin="anonymous"
     ></script>
 
- 
     <link href="./bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="./bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
     <link rel="icon" type="image/x-icon" href="logo.png" />
     <title>Amani</title>
-
   </head>
 
   <body>
@@ -57,7 +55,6 @@
               <a class="nav-link" aria-current="page" href="#">Search</a>
             </li>
 
-
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -78,15 +75,17 @@
     <script id="activities-template" type="text/x-handlebars-template">
       <div class="container activities">
         {{#each activities}}
-          <div class="col-sm-12 col-md-6 col-lg-4 activity" data-id="{{activityId}}">
-            <div class="center"> 
-                <h3>
-                    {{activityName}}
-                  </h3>
-
+          <div
+            class="col-sm-12 col-md-6 col-lg-4 activity"
+            data-id="{{activityId}}"
+          >
+            <div class="center">
+              <h3>
+                {{activityName}}
+              </h3>
 
             </div>
-            
+
             <div class="right">
               <i class="fa-regular fa-calendar-check"></i>
               {{date}}
@@ -96,12 +95,14 @@
             <div><b>Transportation:</b>
               <i class="fa-solid {{icon}}"></i>
               <span class="right">
-              {{#if capacity}}<b>Capacity:</b>{{capacity}}{{/if}}</span></div>
+                {{#if capacity}}<b>Capacity:</b>{{capacity}}{{/if}}</span></div>
             <div><b>Preffered Gender:</b> {{genderText}}</div>
             <div class="right">
-            <a aria-label="Chat on WhatsApp" class="sendWhatsapp" href="https://wa.me/{{telephone}}"><i
-                class="fa-brands fa-whatsapp"
-              ></i></a>
+              <a
+                aria-label="Chat on WhatsApp"
+                class="sendWhatsapp"
+                href="https://wa.me/{{telephone}}"
+              ><i class="fa-brands fa-whatsapp"></i></a>
             </div>
             <div></div>
           </div>
@@ -109,13 +110,91 @@
       </div>
     </script>
 
+    <script id="add-activity-template" type="text/x-handlebars-template">
+      <div
+        class="modal fade"
+        id="addActivity"
+        tabindex="-1"
+        aria-labelledby="addActivityLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addActivityLabel">Add activity</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+              <form onsubmit="addActivity();return false">
+            <div class="modal-body">
+
+
+                <div class="mb-3">
+                  <label
+                    for="group"
+                    class="col-form-label"
+                  ><b>Transportation Type:</b></label>
+                  <select
+                    id="transportationType"
+                    class="form-select"
+                    aria-label="Default select example"
+                    required
+                  >
+                    <option value="" selected>choose a transportation</option>
+                    {{#each transportation}}
+                      <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                  </select>
+                  <div class="mb-3" id="capacityInput" style="display: none;">
+                  <b><label for="capacity" class="col-form-label">Capacity:</label></b>
+                  <input type="number" class="form-control" id="capacity" value="4"/>
+                </div>
+
+                </div>
+                <div class="mb-3">
+                 <input type="radio" id="toSchool" name="location" value="toSchool" onchange="changeText()" checked>
+                 <label for="toSchool">From</label>
+                 <input type="radio" id="fromSchool" name="location" onchange="changeText()" value="fromSchool">
+                 <label for="fromSchool">To</label>
+                  <input type="text" class="form-control" id="location" required/>
+                </div>
+                <div>
+                 <b id="picked">To</b><b>:</b> {{university}}
+                </div>
+
+                <div class="mb-3">
+                  <b><label for="date" class="col-form-label">Date:</label></b>
+                  <input type="date" class="form-control" id="date" required/>
+                </div>
+                <input type="checkbox" id="gender" name="interest" value="gender" />
+                <label for="gender">Do you prefer same gender to student go with you?</label>
+
+            </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >Close</button>
+                  <input value="Add" type="submit" class="btn btn-warning" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>
+    <script src="utils.js"></script>
     <script src="./models/ActivityModel.js"></script>
     <script src="./models/ActivityController.js"></script>
     <script src="./models/Renderer.js"></script>
- 
-           
     <script src="main.js"></script>
   </body>
 </html>
