@@ -3,11 +3,11 @@ const fs = require("fs")
 const User = require('./models/user')
 const University = require('./models/university')
 const Activity = require('./models/activity')
-const activities = JSON.parse(fs.readFileSync("../activity.json"))
-const universities = JSON.parse(fs.readFileSync("../university.json"))
-const users = JSON.parse(fs.readFileSync("../user.json"))
+const activities = require("../activity.json")
+const universities =require("../university.json")
+const users = require("../user.json")
 
-class DBServer{
+class DBManager{
     static connectToDB(){
         mongoose.connect('mongodb://localhost/Amani-DB', { useNewUrlParser: true })
     }
@@ -29,7 +29,7 @@ class DBServer{
         await User.deleteMany({})
         await Activity.deleteMany({})
         await University.deleteMany({})
-        DBServer.generateData()
+        DBManager.generateData()
     }
 }
 
