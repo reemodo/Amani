@@ -1,3 +1,4 @@
+
 const TransportationIcons = { "Bus": "fa-bus", "Car": "fa-car" }
 const PreferedGenderText = { "f": "Female", "m": "Male", "u": "No Prefered Gender" }
 function changeText() {
@@ -24,4 +25,5 @@ function changeText() {
   function isEmpty(obj) {
       return Object.keys(obj).length === 0 && obj.constructor === Object
 }
+
 

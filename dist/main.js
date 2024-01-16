@@ -1,6 +1,4 @@
 
-// const USER_ID = 0
-
 const activityModel = new ActivityModel()
 const renderer = new Renderer()
 const activityController = new ActivityController(activityModel, renderer)
@@ -8,6 +6,7 @@ const activityController = new ActivityController(activityModel, renderer)
 const addActivity = function(){
     activityController.addActivity()
 }
+
 
 const filterActivity= function(){
     
