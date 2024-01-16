@@ -52,7 +52,7 @@
               <a class="nav-link here" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Search</a>
+                <a class="nav-link" href="#filter" data-bs-toggle="collapse" data-bs-target="#filter-container">Search</a>
             </li>
 
             <li class="nav-item">
@@ -71,7 +71,10 @@
         </div>
       </div>
     </nav>
+    <div id="filter-container" class="collapse container">
+    </div>
     <div id="activities-container"></div>
+
     <script id="activities-template" type="text/x-handlebars-template">
       <div class="container activities">
         {{#each activities}}
@@ -131,8 +134,6 @@
             </div>
               <form onsubmit="addActivity();return false">
             <div class="modal-body">
-
-
                 <div class="mb-3">
                   <label
                     for="group"
@@ -187,6 +188,70 @@
           </div>
         </div>
       </div>
+    </script>
+
+    <script id="filter-activities-template" type="text/x-handlebars-template">
+      <div>
+       
+          <div class="mb-3">
+            <label for="group" class="col-form-label"><b>Transportation Type:</b></label>
+            <select
+              id="transportationTypeFilter"
+              class="form-select"
+              aria-label="Default select example"
+            >
+              <option value="" selected>choose a transportation</option>
+              {{#each transportation}}
+                <option value="{{this}}">{{this}}</option>
+              {{/each}}
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="radio"
+              id="toSchoolFilter"
+              name="location"
+              value="toSchool"
+              onchange="changeTextFilter()"
+              checked
+            />
+            <label for="toSchoolFilter">From</label>
+            <input
+              type="radio"
+              id="fromSchoolFilter"
+              name="location"
+              onchange="changeTextFilter()"
+              value="fromSchool"
+            />
+            <label for="fromSchoolFilter">To</label>
+            <input type="text" class="form-control" id="location" />
+          </div>
+          <div>
+            <b id="pickedFilter">To</b><b>:</b>
+            {{university}}
+          </div>
+
+          <div class="mb-3">
+            <b><label for="dateFilter" class="col-form-label">Date:</label></b>
+            <input type="date" class="form-control" id="dateFilter" />
+          </div>
+          <input
+            type="checkbox"
+            id="genderFilter"
+            name="interest"
+            value="gender"
+          />
+          <label for="genderFilter">Search only according to my gender</label>
+          <div class="right">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-toggle="collapse" data-bs-target="#filter-container"
+          >Close</button>
+          <input value="Add" onclick="filterActivity()" class="btn btn-warning" />
+          </div>
+        </div>
     </script>
 
     <script src="./jquery/dist/jquery.js"></script>

@@ -9,6 +9,15 @@ function changeText() {
       outputElement.text("From");
     }
   }
+  function changeTextFilter() {
+    const outputElement = $("#pickedFilter");
+    const to = $("#toSchoolFilter");
+    if (to.is(":checked")) {
+      outputElement.text("To");
+    } else{
+      outputElement.text("From");
+    }
+  }
   const USER_ID = 0 
   const SUCCESS = "Your Activity was added, you can see it in My Activities page"
   function isEmpty(obj) {
