@@ -8,11 +8,12 @@ class ActivityController {
     async filterActivities() {
         try {
             const filterData = {
-                transportationType: $('#transportationType').val(),
-                specificGender: $('#specificGender').is(':checked'),
-                date: $('#date').val(),
-                activityType: $('#activityType').val(),
-                location: $('#location').val()
+                transportationType: $('#transportationTypeFilter').val(),
+                specificGender: $('#genderFilter').is(':checked'),
+                date: $('#dateFilter').val(),
+                location: $('#locationFilter').val(),
+                activityType: $('#activityTypeFilter').val(),
+
             }
             const data = await this.model.getAllActivities(USER_ID, filterData)
             this.view.renderData(data)

@@ -1,9 +1,12 @@
 class Renderer {
     constructor() {
         this.bodyContainer = $("#activities-container")
+        this.filterContainer = $("#filter-container")
         this.activitiesTemplate = $("#activities-template")
+        this.filterActivitiesTemplate = $("#filter-activities-template")
         this.myActivitiesTemplate = $("#my-activities-template")
         this.addActivitiesTemplate = $("#add-activity-template")
+
         this.modal = false
     }
     defineModal(){
@@ -45,6 +48,9 @@ class Renderer {
               capacityInput.hide();
             }
         });
+    }
+    renderFilter(modalData){
+        this.render(this.filterActivitiesTemplate, this.filterContainer, modalData)
     }
     handleSuccess(message) {
         this.defineModal()
