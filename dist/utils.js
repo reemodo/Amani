@@ -8,10 +8,10 @@ function changeText() {
     } else{
       outputElement.text("From");
     }
-  }
+}
   const USER_ID = 0 
   const SUCCESS = "Your Activity was added, you can see it in My Activities page"
   function isEmpty(obj) {
       return Object.keys(obj).length === 0 && obj.constructor === Object
-  }
+}
 
