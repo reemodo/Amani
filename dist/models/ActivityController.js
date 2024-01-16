@@ -33,12 +33,10 @@ class ActivityController {
             gender: $('#gender').val(),
             activityType: $('#activityType').val(),
           }
-        
           await this.model.addActivity(USER_ID, activityData)
-          
-          this.handleSuccess(SUCCESS)
+          this.view.handleSuccess(SUCCESS)
         } catch (error) {
-          this.handleError(error)
+          this.view.handleError(error)
           console.error('Error adding activity:', error)
         }
     }
