@@ -6,6 +6,7 @@ const User = require('../models/user')
 const Activity = require('../models/activity')
 
 
+
 router.get('/', async function(req, res){
     try{
         await dbManager.reGenerate()
