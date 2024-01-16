@@ -14,7 +14,6 @@ class ActivityController {
                 activityType: $('#activityType').val(),
                 location: $('#location').val()
             }
-
             const data = await this.model.getAllActivities(USER_ID, filterData)
             this.view.renderData(data)
         } catch (error) {
