@@ -65,16 +65,6 @@ router.delete('/:activityId', async function(req, res){
         res.status(400).send(err)
     }
 })
-router.get('/', async function(req, res) {
-    try {
-        const activities = await activityCollManager.getActivities()
-        res.send(activities)
-        
-    } catch (error) {
-        res.status(400).send(error)
-    }
-});
-
 
 
 
@@ -97,7 +87,7 @@ router.get('/:userId', async function(req, res) {
         const userId = req.params.userId
         const {transportationType, specificGender, date, activityType, location} = req.query
         const userUniversityName = await userCollManager.getUserUniversity(userId)
-        const activities = await activityCollManager.filteredActivities(transportationType, specificGender, date, activityType, location, userUniversityName)
+        const activities = await activityCollManager.filteredActivities(userId,transportationType, specificGender, date, activityType, location, userUniversityName)
         res.send(activities)
     }
     catch (error) {

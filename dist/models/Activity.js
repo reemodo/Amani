@@ -10,6 +10,7 @@ class Activity{
         this.capacity = activity.capacity
         this.genderText = PreferredGenderText[activity.preferredGender]
         this.icon = TransportationIcons[activity.transportationType]
+        this.activityId = activity._id
         this.handelActivityType()
     }
     handelActivityType( ){
