@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Item = require('../models/Item')
-const dbManager = require('./server/DBManager')
+const dbManager = require('../DBManager')
 
 
 router.get('/', async function(req, res){
