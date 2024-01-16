@@ -5,6 +5,7 @@ class ActivityController {
       this.view = view
     }
   
+
     async filterActivities() {
         try {
             let data
@@ -33,6 +34,7 @@ class ActivityController {
         return Object.keys(obj).length === 0 && obj.constructor === Object
     }
     
+
 
     async addActivity() {
         try {

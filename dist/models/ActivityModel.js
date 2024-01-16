@@ -1,5 +1,6 @@
 class ActivityModel {
 
+
     static async getAllActivities(userId) {
         try {
           const data = await $.get(`/activities/${userId}`)
@@ -16,6 +17,7 @@ class ActivityModel {
         } catch (error) {
           throw error
         }
+
     }
 
     async addActivity(userId, activityData) {

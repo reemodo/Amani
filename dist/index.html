@@ -1,75 +1,121 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Amani</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
-        crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/80f5cec321.js"
+      crossorigin="anonymous"
+    ></script>
+
+ 
     <link href="./bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="./bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
     <link rel="icon" type="image/x-icon" href="logo.png" />
     <title>Amani</title>
 
-</head>
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Amani</a>
-          <button
-            class="navbar-toggler text-warning"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerMenu"
-            aria-controls="navbarTogglerMenu"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarTogglerMenu">
-            
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link here" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Search</a>
-              </li>
-              
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="#"
-                  data-bs-toggle="modal"
-                  data-bs-target="#addActivity"
-                  >Add activity</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">My activities</a>
-              </li>
-            </ul>
-          </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><img
+            src="logo.png"
+            alt="Logo"
+            width="30"
+            height="24"
+            class="d-inline-block align-text-top"
+          />
+          Amani</a
+        >
+        <button
+          class="navbar-toggler text-warning"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerMenu"
+          aria-controls="navbarTogglerMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerMenu">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link here" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Search</a>
+            </li>
+
+
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#addActivity"
+                >Add activity</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">My activities</a>
+            </li>
+          </ul>
         </div>
-      </nav>
-      <div id="activities-container"></div>
+      </div>
+    </nav>
+    <div id="activities-container"></div>
+    <script id="activities-template" type="text/x-handlebars-template">
+      <div class="container activities">
+        {{#each activities}}
+          <div class="col-sm-12 col-md-6 col-lg-4 activity" data-id="{{activityId}}">
+            <div class="center"> 
+                <h3>
+                    {{activityName}}
+                  </h3>
 
 
-      
+            </div>
+            
+            <div class="right">
+              <i class="fa-regular fa-calendar-check"></i>
+              {{date}}
+            </div>
+            <div><b>To:</b> {{to}}</div>
+            <div><b>From:</b> {{from}}</div>
+            <div><b>Transportation:</b>
+              <i class="fa-solid {{icon}}"></i>
+              <span class="right">
+              {{#if capacity}}<b>Capacity:</b>{{capacity}}{{/if}}</span></div>
+            <div><b>Preffered Gender:</b> {{genderText}}</div>
+            <div class="right">
+            <a aria-label="Chat on WhatsApp" class="sendWhatsapp" href="https://wa.me/{{telephone}}"><i
+                class="fa-brands fa-whatsapp"
+              ></i></a>
+            </div>
+            <div></div>
+          </div>
+        {{/each}}
+      </div>
+    </script>
 
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>
-    <script src="ActivityModel.js"></script>
-    <script src="ActivityController.js"></script>
-    <script src="Renderer.js"></script>
+    <script src="./models/ActivityModel.js"></script>
+    <script src="./models/ActivityController.js"></script>
+    <script src="./models/Renderer.js"></script>
+ 
+           
     <script src="main.js"></script>
-</body>
-
-
+  </body>
 </html>
