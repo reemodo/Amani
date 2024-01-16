@@ -24,7 +24,6 @@ router.get('/myActivities/:userId', async function(req, res) {
         res.status(400).send(error)
     }
 });
-
 router.post('/:userId', async function(req, res){
     try{
     const userId = req.params.userId
