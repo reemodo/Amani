@@ -29,8 +29,13 @@ class ActivityModel {
         }
     }
 
-    showMyActivities(){
-
+    async showMyActivities(userId) {
+        try {
+            const data = await $.get(`/myActivities/${userId}`)
+            return data
+        } catch (error) {
+            throw error
+        }
     }
 
     deleteMyActivity(){
