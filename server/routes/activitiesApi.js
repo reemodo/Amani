@@ -4,10 +4,12 @@ const dbManager = require('../DBManager')
 const User = require('../models/user')
 const Activity = require('../models/activity')
 const activityCollManager = require('../collections-manager/activityCollManager')
+
 const consts = require('../../config')
 const userCollManager = require('../collections-manager/userCollManager')
 
 router.get('/', async function(req, res) {
+
     try {
         const activities = await activityCollManager.getActivities()
         res.send(activities)
@@ -15,6 +17,7 @@ router.get('/', async function(req, res) {
     catch (error) {
         res.status(400).send(error)
     }
+
 })
 
 router.get('/:userId', async function(req, res) {
@@ -29,6 +32,7 @@ router.get('/:userId', async function(req, res) {
         res.status(400).send(error)
     }
 })
+
 
 router.get('/myActivities/:userId', async function(req, res) {
     try {
@@ -74,6 +78,15 @@ router.delete('/:activityId', async function(req, res){
         res.status(400).send(err)
     }
 })
+router.get('/', async function(req, res) {
+    try {
+        const activities = await activityCollManager.getActivities()
+        res.send(activities)
+        
+    } catch (error) {
+        res.status(400).send(error)
+    }
+});
 
 router.get('/DBgenerator', async function(req, res){
     try{
@@ -87,16 +100,17 @@ router.get('/DBgenerator', async function(req, res){
 })
 
 
-router.put('/:activityId', async function(req, res){
+router.patch('/:activityId', async function(req, res){
     try{
         const activityId = req.params.activityId
-        const capacity = req.body
-        console.log(capacity)
-        await Activity.findOneAndUpdate({_id : activityId}, {capacity: capacity.capacity}, {new: true})
+        const capacity = req.body.capacity
+        await activityCollManager.updateCapacity(activityId, capacity)
         res.status(200).end()
-    }catch(err){
+    }
+    catch(err){
         console.error(err);
         res.status(400).send(err => err)
     }
 })
+
 module.exports = router

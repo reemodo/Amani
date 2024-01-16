@@ -1,6 +1,4 @@
 
-// const USER_ID = 0
-
 const activityModel = new ActivityModel()
 const renderer = new Renderer()
 const activityController = new ActivityController(activityModel, renderer)
@@ -25,6 +23,15 @@ async function myActivity(){
     renderer.renderFilter(modalData)
 }
 
+async function init() {
+    // const allActivities = await activityModel.getAllActivities(USER_ID)
+    const activities = [{activityId:0, to:"Harvard", from:"Tel Aviv",activityName:"To University", transportationType:"Car", icon:"fa-car", capacity:"2", telephone:"972532792007", date:"20/1/2024", genderText:"Female"}]
+    const modalData = {transportation:["Bus","Car"], university:"Harvard"}
+    renderer.renderActivities(activities)
+    renderer.renderModal(modalData)
+    renderer.renderFilter(modalData)
+
+}
 async function init() {
     // const allActivities = await activityModel.getAllActivities(USER_ID)
     const activities = [{activityId:0, to:"Harvard", from:"Tel Aviv",activityName:"To University", transportationType:"Car", icon:"fa-car", capacity:"2", telephone:"972532792007", date:"20/1/2024", genderText:"Female"}]
