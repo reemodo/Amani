@@ -37,6 +37,18 @@ router.post('/:userId', async function(req, res){
     }
 })
 
+
+router.delete('/:activityId', async function(req, res){
+    try{
+        const activityId = req.params.activityId
+        await Activity.findOneAndDelete({_id: activityId})
+        res.status(200).end()
+    }catch(err){
+        console.error(err)
+        res.status(400).send(err)
+    }
+})
+
 router.get('/DBgenerator', async function(req, res){
     try{
         await dbManager.reGenerate()
