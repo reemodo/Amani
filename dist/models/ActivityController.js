@@ -7,7 +7,6 @@ class ActivityController {
 
     async filterActivities() {
         try {
-            let data
             const filterData = {
                 university: $('#university').val(),
                 transportationType: $('#transportationType').val(),
@@ -16,21 +15,12 @@ class ActivityController {
                 location: $('#location').val(),
                 activityType: $('#activityType').val(),
             }
-        
-            if (this.isEmpty(filterData)) {
-                data = await this.model.getAllActivities(USER_ID)
-            } else {
-                data = await this.model.filterActivities(USER_ID, filterData)
-            }
-        
+
+            const data = await this.model.getAllActivities(USER_ID, filterData)
             this.view.renderData(data)
         } catch (error) {
             console.error('Error filtering or fetching activities:', error)
         }
-    }
-    
-    isEmpty(obj) {
-        return Object.keys(obj).length === 0 && obj.constructor === Object
     }
 
     async addActivity() {
@@ -44,7 +34,7 @@ class ActivityController {
             activityType: $('#activityType').val(),
           }
         
-          const data = await this.model.addActivity(USER_ID, activityData)
+          await this.model.addActivity(USER_ID, activityData)
           
           this.handleSuccess(SUCCESS)
         } catch (error) {
@@ -64,8 +54,14 @@ class ActivityController {
     }
     
 
-    deleteMyActivity(){
-
+    async deleteMyActivity(activityId) {
+        try {
+            await this.model.deleteMyActivity(USER_ID, activityId)
+            this.showMyActivities()
+          
+        } catch (error) {
+          console.error('Error removing activity:', error)
+        }
     }
 
     editMyActivity(){
