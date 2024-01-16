@@ -5,17 +5,26 @@ class ActivityController {
     }
   
 
-    async filterActivities() {
+    async filterActivities(filtered = false) {
         try {
+          const to = $('#toSchoolFilter')
+          const from = $('#fromSchoolFilter')
+          const location= $('#locationFilter').val()
+          let activityType = undefined
+          if (location != "" && to.is(":checked")) {
+            activityType = "fromSchool"
+          } else if(location != "" && from.is(":checked") ){
+            activityType = "toSchool"
+          }
             const filterData = {
                 transportationType: $('#transportationTypeFilter').val(),
                 specificGender: $('#genderFilter').is(':checked'),
                 date: $('#dateFilter').val(),
-                location: $('#locationFilter').val(),
-                activityType: $('#activityTypeFilter').val(),
+                location:location,
+                activityType: activityType,
 
             }
-            const allActivities = await this.model.getAllActivities(USER_ID, filterData)
+            const allActivities = await this.model.getAllActivities(USER_ID, filtered,filterData)
             const activities = allActivities.map(activityData => new Activity(activityData))
             const modalData = {transportation:["Bus","Car"], university:"Harvard"}
             this.view.renderPage(activities,modalData)
@@ -26,20 +35,21 @@ class ActivityController {
 
     async addActivity() {
         try {
-          const to = $("#toSchool");
-          let transportationType
-          if (to.is(":checked")) {
-            transportationType = "fromSchool"
-          } else{
-            transportationType = "toSchool"
+          
+          const to = $('#toSchool')
+          let activityType = undefined
+          if ( to.is(":checked")) {
+            activityType = "fromSchool"
+          } else {
+            activityType = "toSchool"
           }
           const activityData = {
             date: $('#date').val(),
             location: $('#location').val(),
-            transportationType: transportationType,
+            transportationType: $('#transportationType').val(),
             capacity: $('#capacity').val(),
             gender: $('#gender').is(':checked'),
-            activityType: $('#activityType').val(),
+            activityType: activityType,
           }
           console.log(activityData.location)
           await this.model.addActivity(USER_ID, activityData)

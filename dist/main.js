@@ -7,8 +7,8 @@ const addActivity = function(){
     activityController.addActivity()
 }
 
-const filterActivity= function(){
-    
+async function filterActivity (){
+    await activityController.filterActivities(filtered = true)
 }
 async function deleteActivity(activityID){
     await activityController.deleteMyActivity(activityID)
@@ -16,7 +16,7 @@ async function deleteActivity(activityID){
 }
 
 async function myActivity(){
-    const allActivities = await activityController.showMyActivities()
+    await activityController.showMyActivities()
 }
 
 async function init() {

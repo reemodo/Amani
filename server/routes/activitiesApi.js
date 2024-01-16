@@ -40,7 +40,7 @@ router.post('/:userId', async function(req, res){
         if(req.body.gender === "true"){
             preferredGender = userData.gender
         }
-        const saveMeActivity = {...req.body ,universityName: userData.universityName ,preferredGender: preferredGender}
+        const saveMeActivity = {...req.body ,userId,universityName: userData.universityName ,preferredGender: preferredGender}
         await activityCollManager.saveActivity(saveMeActivity)
         res.status(200).end()
     }
@@ -89,9 +89,13 @@ router.patch('/:activityId', async function(req, res){
 router.get('/:userId', async function(req, res) {
     try {
         const userId = req.params.userId
+        const userData = await userCollManager.getUserUniversityAndGender(userId)
         const {transportationType, specificGender, date, activityType, location} = req.query
-        const userUniversityName = await userCollManager.getUserUniversity(userId)
-        const activities = await activityCollManager.filteredActivities(userId,transportationType, specificGender, date, activityType, location, userUniversityName)
+        let preferredGender = undefined
+        if(specificGender === "true"){
+            preferredGender = userData.gender
+        }
+        const activities = await activityCollManager.filteredActivities(userId,transportationType, preferredGender, date, activityType, location, userData.userUniversityName)
         res.send(activities)
     }
     catch (error) {
