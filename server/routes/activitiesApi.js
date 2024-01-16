@@ -3,8 +3,16 @@ const router = express.Router()
 const dbManager = require('../DBManager')
 const User = require('../models/user')
 const Activity = require('../models/activity')
-
-
+const activityCollManager = require('../collections-manager/activityCollManager')
+router.get('/', async function(req, res) {
+    try {
+        const activities = await activityCollManager.getActivities()
+        res.send(activities)
+        
+    } catch (error) {
+        res.status(400).send(error)
+    }
+});
 
 router.get('/myActivities/:userId', async function(req, res) {
     try {
