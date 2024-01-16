@@ -9,7 +9,10 @@ class userCollManager{
         const user = await User.findById(id)
         return user
     }
-    
+    static async getUserUniversity(userId){
+        const user = await User.findById(userId)
+        return user.universityName
+    }
 }
 
 module.exports = userCollManager
