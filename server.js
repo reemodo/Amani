@@ -13,11 +13,11 @@ app.use(express.static(path.join(__dirname, 'node_modules')))
 
 app.use('/activities', api)
 
+const DBManager = require('./server/DBManager');
+DBManager.connectToDB()
+
 const port = 3000
 
 app.listen(port, function() {
     console.log(`Runnin runnin and runnin runnin on port ${port}`)
 })
-
-const DBManager = require('./server/DBManager');
-DBManager.connectToDB()

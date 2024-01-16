@@ -3,9 +3,9 @@ const fs = require("fs")
 const User = require('./models/user')
 const University = require('./models/university')
 const Activity = require('./models/activity')
-const activities = require("../activity.json")
-const universities =require("../university.json")
-const users = require("../user.json")
+const activities = require("../activity")
+const universities =require("../university")
+const users = require("../user")
 
 class DBManager{
     static connectToDB(){
@@ -29,7 +29,7 @@ class DBManager{
         await User.deleteMany({})
         await Activity.deleteMany({})
         await University.deleteMany({})
-        DBManager.generateData()
+        await DBManager.generateData()
     }
 }
 module.exports = DBManager

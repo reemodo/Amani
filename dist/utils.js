@@ -1,5 +1,5 @@
 const TransportationIcons = { "Bus": "fa-bus", "Car": "fa-car" }
-const PreferedGenderText = { "f": "Female", "m": "Male", "u": "No Prefered Gender" }
+const PreferredGenderText = { "f": "Female", "m": "Male", "u": "No Preferred Gender" }
 function changeText() {
     const outputElement = $("#picked");
     const to = $("#toSchool");
