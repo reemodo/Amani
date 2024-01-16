@@ -8,14 +8,12 @@ class ActivityController {
     async filterActivities() {
         try {
             const filterData = {
-                university: $('#university').val(),
                 transportationType: $('#transportationType').val(),
                 specificGender: $('#specificGender').is(':checked'),
                 date: $('#date').val(),
-                location: $('#location').val(),
                 activityType: $('#activityType').val(),
+                location: $('#location').val()
             }
-
             const data = await this.model.getAllActivities(USER_ID, filterData)
             this.view.renderData(data)
         } catch (error) {
@@ -62,7 +60,12 @@ class ActivityController {
         }
     }
 
-    editMyActivity(){
-        
-    }
+    async editCapacity(activityId, newCapacity) {
+        try {
+            await this.model.editCapacity(USER_ID, activityId, newCapacity)
+            this.showMyActivities()
+        } catch (error) {
+          console.error('Error editing capacity:', error)
+        }
+      }
 }
