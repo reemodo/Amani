@@ -8,14 +8,13 @@ class ActivityController {
     async filterActivities() {
         try {
             const filterData = {
-                university: $('#university').val(),
-                transportationType: $('#transportationType').val(),
-                specificGender: $('#specificGender').is(':checked'),
-                date: $('#date').val(),
-                location: $('#location').val(),
-                activityType: $('#activityType').val(),
-            }
+                transportationType: $('#transportationTypeFilter').val(),
+                specificGender: $('#genderFilter').is(':checked'),
+                date: $('#dateFilter').val(),
+                location: $('#locationFilter').val(),
+                activityType: $('#activityTypeFilter').val(),
 
+            }
             const data = await this.model.getAllActivities(USER_ID, filterData)
             this.view.renderData(data)
         } catch (error) {
@@ -33,12 +32,10 @@ class ActivityController {
             gender: $('#gender').val(),
             activityType: $('#activityType').val(),
           }
-        
           await this.model.addActivity(USER_ID, activityData)
-          
-          this.handleSuccess(SUCCESS)
+          this.view.handleSuccess(SUCCESS)
         } catch (error) {
-          this.handleError(error)
+          this.view.handleError(error)
           console.error('Error adding activity:', error)
         }
     }
@@ -64,7 +61,12 @@ class ActivityController {
         }
     }
 
-    editMyActivity(){
-        
-    }
+    async editCapacity(activityId, newCapacity) {
+        try {
+            await this.model.editCapacity(USER_ID, activityId, newCapacity)
+            this.showMyActivities()
+        } catch (error) {
+          console.error('Error editing capacity:', error)
+        }
+      }
 }
