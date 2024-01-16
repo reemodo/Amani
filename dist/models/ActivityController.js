@@ -15,8 +15,10 @@ class ActivityController {
                 activityType: $('#activityTypeFilter').val(),
 
             }
-            const data = await this.model.getAllActivities(USER_ID, filterData)
-            this.view.renderData(data)
+            const allActivities = await this.model.getAllActivities(USER_ID, filterData)
+            const activities = allActivities.map(activityData => new Activity(activityData))
+            const modalData = {transportation:["Bus","Car"], university:"Harvard"}
+            this.view.renderPage(activities,modalData)
         } catch (error) {
             console.error('Error filtering or fetching activities:', error)
         }
@@ -42,8 +44,10 @@ class ActivityController {
 
     async showMyActivities() {
         try {
-            const myActivities = await this.model.getMyActivities(USER_ID)
-            this.view.renderMyActivities(myActivities)
+            const myActivities = await this.model.showMyActivities(USER_ID)
+            const activities = myActivities.map(activityData => new Activity(activityData))
+            const modalData = {transportation:["Bus","Car"], university:"Harvard"}
+            this.view.renderMyPage(activities,modalData)
 
         } catch (error) {
             console.error('Error fetching user activities:', error)

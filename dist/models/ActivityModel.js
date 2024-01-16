@@ -23,7 +23,7 @@ class ActivityModel {
 
     async showMyActivities(userId) {
         try {
-            const data = await $.get(`/myActivities/${userId}`)
+            const data = await $.get(`/activities/myActivities/${userId}`)
             return data
         } catch (error) {
             throw error

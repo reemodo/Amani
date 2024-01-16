@@ -15,13 +15,16 @@ const filterActivityField = function(date, transportationType, preferredGender){
         return updateFields
 }
 
-const filterAllActivityField = function(transportationType, specificGender, date, activityType, location, universityName){
+const filterAllActivityField = function(userId,transportationType, specificGender, date, activityType, location, universityName){
     const filter = {}
+    if(userId){
+        filter.userId =  { $ne: userId }
+    }
     if(date){
         filter.date = date
     }
     else{
-        filter.date = { $gt: consts.currentDate }
+        filter.date = { $gte: consts.currentDate }
     }
     if (transportationType) {
         filter.transportationType = transportationType
@@ -38,6 +41,8 @@ const filterAllActivityField = function(transportationType, specificGender, date
     if (specificGender) {
         filter.preferredGender = specificGender
     }
+    //
+
     return filter
 }
 module.exports = {filterActivityField, filterAllActivityField}

@@ -52,6 +52,17 @@ class Renderer {
     renderFilter(modalData){
         this.render(this.filterActivitiesTemplate, this.filterContainer, modalData)
     }
+    renderPage(activities,modalData){
+        renderer.renderActivities(activities)
+        renderer.renderModal(modalData)
+        renderer.renderFilter(modalData)
+    }
+    renderMyPage(activities,modalData){
+        renderer.renderMyActivities(activities)
+        renderer.renderModal(modalData)
+        renderer.renderFilter(modalData)
+    }
+
     handleSuccess(message) {
         this.defineModal()
         this.modalTitle.text("Success")
