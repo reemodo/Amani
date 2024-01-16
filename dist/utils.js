@@ -9,7 +9,8 @@ function changeText() {
     } else{
       outputElement.text("From");
     }
-  }
+}
+
   function changeTextFilter() {
     const outputElement = $("#pickedFilter");
     const to = $("#toSchoolFilter");
