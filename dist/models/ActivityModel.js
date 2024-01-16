@@ -1,29 +1,21 @@
 class ActivityModel {
 
 
-    static async getAllActivities(userId) {
+    async getAllActivities(userId, filterData) {
         try {
           const data = await $.get(`/activities/${userId}`)
+          if(isEmpty(filterData)){
+            const data = await $.get(`/activities/${userId}?filterData: ${filterData}` )
+          }
           return data
         } catch (error) {
           throw error
         }
-    }
-    
-    static async filterActivities(userId, filterData) {
-        try {
-          const data = await $.get(`/activities/${userId}`, filterData)
-          return data
-        } catch (error) {
-          throw error
-        }
-
     }
 
     async addActivity(userId, activityData) {
         try {
-            const data = await $.post(`/activities/${userId}`, activityData)
-            return data
+            await $.post(`/activities/${userId}`, activityData)
         } catch (error) {
             throw error
         }
@@ -38,8 +30,21 @@ class ActivityModel {
         }
     }
 
-    deleteMyActivity(){
 
+    async deleteMyActivity(userId, activityId) {
+        await $.ajax({
+            url: `/activities/${activityId}`,
+            type: 'DELETE',
+            data: { userId },
+            success: function() {
+               return true
+            },
+            message: 'Activity removed successfully',
+          
+            error: function(xhr, status, error) {
+                console.error(error)
+            }
+        })
     }
 
     editMyActivity(){
