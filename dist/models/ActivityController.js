@@ -57,9 +57,12 @@ class ActivityController {
             date: $('#date').val(),
             location: $('#location').val(),
             transportationType: $('#transportationType').val(),
-            capacity: $('#capacity').val(),
             gender: $('#gender').is(':checked'),
             activityType: activityType,
+          }
+          if(activityData.transportationType === "Car")
+          {
+            activityData.capacity = $('#capacity').val()
           }
           console.log(activityData.location)
           await this.model.addActivity(USER_ID, activityData)

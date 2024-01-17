@@ -316,13 +316,14 @@
                 <span>{{#if capacity}}<b>Capacity:</b><input type="number" class="form-control sameLine" id="capacity-{{activityId}}" value="{{capacity}}"/>{{/if}}</span></div>
             <div><b>Preffered Gender:</b> {{genderText}}</div>
             <div class="right">
+              {{#if capacity}}
               <button
                 class="sendWhatsapp"
                 onclick="editActivity('{{activityId}}')"
               >
               <i class="fa-solid fa-pen-to-square"></i>
               </button>
-
+              {{/if}}
               <button
                 class="sendWhatsapp"
                 onclick="deleteActivity('{{activityId}}')"
