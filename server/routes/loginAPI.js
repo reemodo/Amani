@@ -47,9 +47,7 @@ const secretKey = 'my_secret_key';
 router.post('/register', async function(req, res){
   try{
       const userData = req.body
-      const user = await userCollManager.saveUser(userData)
-      console.log(userData)
-      
+      const user = await userCollManager.saveUser(userData)      
       const accessToken = generateAccessToken(user.toJSON());
       res.send({ accessToken , id : user.id });
   }
