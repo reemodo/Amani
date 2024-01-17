@@ -7,7 +7,6 @@ router.post('/', async function(req, res){
     try{
         const userData = req.body
         const user = await userCollManager.saveUser(userData)
-        console.log(userData)
         if (!user) {
             return res.status(401).send({ message: 'Invalid username or password' });
           }

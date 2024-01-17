@@ -82,7 +82,6 @@ class ActivityController {
           {
             activityData.capacity = $('#capacity').val()
           }
-          console.log(activityData.location)
           await this.model.addActivity(USER_ID, activityData)
           this.view.handleSuccess(SUCCESS)
         } catch (error) {
@@ -96,7 +95,6 @@ class ActivityController {
             const universityName = await this.model.getUserUniversity(USER_ID)
             const myActivities = await this.model.showMyActivities(USER_ID)
             const activities = myActivities.map(activityData => new Activity(activityData))
-            console.log(universityName)
             const modalData = {transportation:["Bus","Car"], university:universityName}
             this.view.renderMyPage(activities,modalData)
 
