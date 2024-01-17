@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/80f5cec321.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link href="../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/registerStyle.css" />
+    <link rel="icon" type="image/x-icon" href="../logo/logo.png" />
+    <title>Amani register</title>
+</head>
+<body>
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+          <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+              <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                <div class="ca">
+
+                </div>
+                <div class="card-body p-4 p-md-5">
+
+                  <img src="../logo/logo2.png"
+                          style="width: 50px;" alt="logo">
+                        <h4 class="mt-1 mb-5 pb-1" style="display: inline;">Register to Amani</h4>
+
+                  <form onsubmit="register();return false">
+      
+                    <div class="row">
+                      <div class="col-md-12 mb-4">
+      
+                        <div class="form-outline">
+                          <input type="text" id="name-register" class="form-control form-control-lg" placeholder="Full Name" required/>
+                        </div>
+      
+                      </div>
+                    </div>
+      
+                    
+      
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+      
+                        <div class="form-outline">
+                          <input type="email" id="email-register" class="form-control form-control-lg" placeholder="Email" required/>
+                        </div>
+      
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+      
+                        <div class="form-outline">
+                          <input type="password" id="password-register" class="form-control form-control-lg" placeholder="Password" required/>
+                        </div>
+      
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4 d-flex align-items-center">
+        
+                          <div class="form-outline datepicker w-100">
+                            <input type="tel" pattern="[0-9]{10}" class="form-control form-control-lg" id="phone-register" placeholder="Phone Number" required/>                          </div>
+        
+                        </div>
+                        <div class="col-md-6 mb-4">
+        
+                          <h6 class="mb-2 pb-1">Gender: </h6>
+        
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="female-register"
+                              value="option1" checked />
+                            <label class="form-check-label" for="female-register">Female</label>
+                          </div>
+        
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="male-register"
+                              value="option2" />
+                            <label class="form-check-label" for="male-register">Male</label>
+                          </div>
+        
+        
+                        </div>
+                      </div>
+      
+                    <div class="row">
+                      <div class="col-12">
+      
+                        <select id="university-register" class="select form-control-lg" required>
+                          <option value="" selected>Choose a university</option>
+                          <option value="Ben gurion">Ben gurion</option>
+                          <option value="Harvard">Harvard</option>
+                          <option value="Sami shamoon">Sami shamoon</option>
+                        </select>      
+                      </div>
+                    </div>
+      
+                    <div class="mt-4 pt-2">
+                      <input class="btn btn-danger gradient-custom btn-lg" type="submit" value="Submit" />
+                    </div>
+      
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+
+    <script src="../jquery/dist/jquery.js"></script>
+    <script src="../models/Activity.js"></script>
+    <script src="../handlebars/dist/handlebars.js"></script>
+    <script src="../utils.js"></script>
+    <script src="../models/ActivityModel.js"></script>
+    <script src="../models/ActivityController.js"></script>
+    <script src="../models/Renderer.js"></script>
+</body>
+</html>
