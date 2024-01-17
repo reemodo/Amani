@@ -13,16 +13,22 @@ class userCollManager{
         const user = await User.findById(userId)
         return user.universityName
     }
-
     static async getUserUniversityAndGender(userId){
         const user = await User.findById(userId)
         return {universityName : user.universityName,gender : user.gender}
     }
+
     static async findUserByMail(email){
         const user = await User.findOne({"email" : email})
         return user
     }
+    
 
+    static async saveUser(user){
+        const newUser = new User(user)
+        await newUser.save()
+        return newUser
+    }
 }
 
 module.exports = userCollManager

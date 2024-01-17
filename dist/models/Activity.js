@@ -8,6 +8,7 @@ class Activity{
         this.universityName = activity.universityName
         this.date = activity.date.split('T')[0]
         this.capacity = activity.capacity
+        this.telephone = activity.telephone
         this.genderText = PreferredGenderText[activity.preferredGender]
         this.icon = TransportationIcons[activity.transportationType]
         this.activityId = activity._id
