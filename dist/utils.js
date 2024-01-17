@@ -52,5 +52,23 @@ function login(){
 
     alert(`You tried to log in with the email ${email} unfortunatly login doesn't work yet`)
 }
+function register(){
+    let gender
+    if($("#female-register").is(':checked')){
+        gender='f'
+    }
+    else{
+        gender = 'm'
+    }
+    const user={
+        name:$("#name-register").val(),
+        email:$("#email-register").val(),
+        password:$("#password-register").val(),
+        gender:gender,
+        universityName:$("#university-register").val(),
+        phone:$("#phone-register").val()
 
+    }
+    console.log(user)
+}
 
