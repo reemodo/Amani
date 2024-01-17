@@ -48,18 +48,18 @@ class ActivityModel {
     }
 
     async editCapacity(userId, activityId, newCapacity) {
-          return editResult = await $.ajax({
+        console.log({ userId, newCapacity })
+          return await $.ajax({
             url: `/activities/${activityId}`,
             type: 'PATCH',
-            data: { userId, newCapacity },
-            success: function() {
-                return true
-             },
-             message: 'Activity updated successfully',
-           
-             error: function(xhr, status, error) {
-                 console.error(error)
-             }
+            contentType: 'application/json',
+            data: JSON.stringify({ userId,"capacity": newCapacity }),
+            success: function(response) {
+                alert("Your capacity has successfully changed.")
+              },
+              error: function(error) {
+                alert("Couldn't change the capacity.")
+              }
           })
       }
 }

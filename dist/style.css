@@ -1,19 +1,16 @@
-.nav-link:hover{
-    color: lightsalmon;
-}
-
-.here{
-    color: orange;
+.nav-link:hover {
+  color: lightsalmon;
 }
 
 .sendWhatsapp {
-  background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+  background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
   border: 0;
   border-radius: 12px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   display: inline-block;
-  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 2.5;
@@ -21,7 +18,7 @@
   padding: 0 1rem;
   text-align: center;
   text-decoration: none;
-  transition: box-shadow .2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -29,34 +26,44 @@
 }
 
 .sendWhatsapp:not([disabled]):focus {
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+    -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+    0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
 }
 
 .sendWhatsapp:not([disabled]):hover {
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+    -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+    0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
 }
 
-.activity{
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    padding: 1vmax;
+.activity {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 1vmax;
 }
 
-.activities{
-    margin-top: 2vmax;
+.activities {
+  margin-top: 2vmax;
+}
+.sameLine {
+  display: inline;
+  width: 70px;
 }
 
-
-
-.right{
-    text-align: right;
+.Line {
+  display: flex;
+  justify-content: space-between;
 }
 
-.center{
-    text-align: center;
+.right {
+  text-align: right;
 }
 
-.btn-warning{
-  background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
-  color: #FFFFFF;
+.center {
+  text-align: center;
 }
 
+.btn-warning {
+  background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
+  color: #ffffff;
+}

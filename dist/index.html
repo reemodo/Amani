@@ -49,10 +49,22 @@
         <div class="collapse navbar-collapse" id="navbarTogglerMenu">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#" onclick="init()">Home</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="#"
+                onclick="init()"
+                >Home</a
+              >
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#filter" data-bs-toggle="collapse" data-bs-target="#filter-container">Search</a>
+              <a
+                class="nav-link"
+                href="#filter"
+                data-bs-toggle="collapse"
+                data-bs-target="#filter-container"
+                >Search</a
+              >
             </li>
 
             <li class="nav-item">
@@ -65,21 +77,26 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#" onclick="myActivity()">My activities</a>
+              <a
+                class="nav-link"
+                aria-current="page"
+                href="#"
+                onclick="myActivity()"
+                >My activities</a
+              >
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <div id="filter-container" class="collapse container">
-    </div>
-    <div id="activities-container"></div>
+    <div id="filter-container" class="collapse container "></div>
+    <div id="activities-container" class="container mt-4"></div>
 
     <script id="activities-template" type="text/x-handlebars-template">
-      <div class="container activities">
+      <div class="row activities">
         {{#each activities}}
           <div
-            class="col-sm-12 col-md-6 col-lg-4 activity"
+            class="col-sm-12 col-md-6 col-lg-4 activity mx-3 mb-3"
             data-id="{{activityId}}"
           >
             <div class="center">
@@ -95,9 +112,9 @@
             </div>
             <div><b>To:</b> {{to}}</div>
             <div><b>From:</b> {{from}}</div>
-            <div><b>Transportation:</b>
-              <i class="fa-solid {{icon}}"></i>
-              <span class="right">
+            <div class="Line"><span><b>Transportation:</b>
+              <i class="fa-solid {{icon}}"></i></span>
+              <span>
                 {{#if capacity}}<b>Capacity:</b>{{capacity}}{{/if}}</span></div>
             <div><b>Preffered Gender:</b> {{genderText}}</div>
             <div class="right">
@@ -192,74 +209,78 @@
 
     <script id="filter-activities-template" type="text/x-handlebars-template">
       <div>
-       
-          <div class="mb-3">
-            <label for="group" class="col-form-label"><b>Transportation Type:</b></label>
-            <select
-              id="transportationTypeFilter"
-              class="form-select"
-              aria-label="Default select example"
-            >
-              <option value="" selected>choose a transportation</option>
-              {{#each transportation}}
-                <option value="{{this}}">{{this}}</option>
-              {{/each}}
-            </select>
-          </div>
 
-          <div class="mb-3">
-            <input
-              type="radio"
-              id="toSchoolFilter"
-              name="location"
-              value="toSchool"
-              onchange="changeTextFilter()"
-              checked
-            />
-            <label for="toSchoolFilter">From</label>
-            <input
-              type="radio"
-              id="fromSchoolFilter"
-              name="location"
-              onchange="changeTextFilter()"
-              value="fromSchool"
-            />
-            <label for="fromSchoolFilter">To</label>
-            <input type="text" class="form-control" id="locationFilter" />
-          </div>
-          <div>
-            <b id="pickedFilter">To</b><b>:</b>
-            {{university}}
-          </div>
+        <div class="mb-3">
+          <label for="group" class="col-form-label"><b>Transportation Type:</b></label>
+          <select
+            id="transportationTypeFilter"
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option value="" selected>choose a transportation</option>
+            {{#each transportation}}
+              <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
+        </div>
 
-          <div class="mb-3">
-            <b><label for="dateFilter" class="col-form-label">Date:</label></b>
-            <input type="date" class="form-control" id="dateFilter" />
-          </div>
+        <div class="mb-3">
           <input
-            type="checkbox"
-            id="genderFilter"
-            name="interest"
-            value="gender"
+            type="radio"
+            id="toSchoolFilter"
+            name="location"
+            value="toSchool"
+            onchange="changeTextFilter()"
+            checked
           />
-          <label for="genderFilter">Search only according to my gender</label>
-          <div class="right">
+          <label for="toSchoolFilter">From</label>
+          <input
+            type="radio"
+            id="fromSchoolFilter"
+            name="location"
+            onchange="changeTextFilter()"
+            value="fromSchool"
+          />
+          <label for="fromSchoolFilter">To</label>
+          <input type="text" class="form-control" id="locationFilter" />
+        </div>
+        <div>
+          <b id="pickedFilter">To</b><b>:</b>
+          {{university}}
+        </div>
+
+        <div class="mb-3">
+          <b><label for="dateFilter" class="col-form-label">Date:</label></b>
+          <input type="date" class="form-control" id="dateFilter" />
+        </div>
+        <input
+          type="checkbox"
+          id="genderFilter"
+          name="interest"
+          value="gender"
+        />
+        <label for="genderFilter">Search only according to my gender</label>
+        <div class="right">
           <button
             type="button"
             class="btn btn-secondary"
-            data-bs-toggle="collapse" data-bs-target="#filter-container"
+            data-bs-toggle="collapse"
+            data-bs-target="#filter-container"
           >Close</button>
-          <button type="button"  onclick="filterActivity()" class="btn btn-warning">Search</button>
-          </div>
+          <button
+            type="button"
+            onclick="filterActivity()"
+            class="btn btn-warning"
+          >Search</button>
         </div>
+      </div>
     </script>
 
-
     <script id="my-activities-template" type="text/x-handlebars-template">
-      <div class="container activities">
+      <div class="row activities">
         {{#each myActivities}}
           <div
-            class="col-sm-12 col-md-6 col-lg-4 activity"
+            class="col-sm-12 col-md-6 col-lg-4 activity mb-3 mx-3"
             data-id="{{activityId}}"
           >
             <div class="center">
@@ -275,14 +296,22 @@
             </div>
             <div><b>To:</b> {{to}}</div>
             <div><b>From:</b> {{from}}</div>
-            <div><b>Transportation:</b>
-              <i class="fa-solid {{icon}}"></i>
-              <span class="right">
-                {{#if capacity}}<b>Capacity:</b>{{capacity}}{{/if}}</span></div>
+            <div class="Line"><span><b>Transportation:</b>
+              <i class="fa-solid {{icon}}"></i></span>
+                <span>{{#if capacity}}<b>Capacity:</b><input type="number" class="form-control sameLine" id="capacity-{{activityId}}" value="{{capacity}}"/>{{/if}}</span></div>
             <div><b>Preffered Gender:</b> {{genderText}}</div>
             <div class="right">
+              <button
+                class="sendWhatsapp"
+                onclick="editActivity('{{activityId}}')"
+              >
+              <i class="fa-solid fa-pen-to-square"></i>
+              </button>
 
-              <button class="sendWhatsapp" onclick="deleteActivity('{{activityId}}')">
+              <button
+                class="sendWhatsapp"
+                onclick="deleteActivity('{{activityId}}')"
+              >
                 <i class="fa-solid fa-trash"></i>
               </button>
             </div>
@@ -290,9 +319,7 @@
           </div>
         {{/each}}
       </div>
-
     </script>
-
 
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./models/Activity.js"></script>
