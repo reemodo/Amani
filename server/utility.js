@@ -1,3 +1,4 @@
+const apiKey = require("./apiKey")
 const consts = require("../config")
 const filterActivityField = function(date, transportationType, preferredGender){
     const updateFields = {}
@@ -12,6 +13,26 @@ const filterActivityField = function(date, transportationType, preferredGender){
             updateFields.preferredGender = preferredGender
         }
         return updateFields
+}
+
+const distance = async function(origin,destination){
+    
+    const apiUrl = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin}&destinations=${destination}&key=${apiKey}`;
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+
+      if (data.status === 'OK') {
+        const distance = data.rows[0].elements[0].distance.text;
+        const duration = data.rows[0].elements[0].duration.text;
+        document.getElementById('result').innerHTML = `Distance: ${distance}, Duration: ${duration}`;
+      } else {
+        return -1
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
 }
 
 
