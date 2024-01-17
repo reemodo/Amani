@@ -30,7 +30,7 @@ async function init() {
         await activityController.filterActivities()
     }
    else{
-        window.location.href = './LoginPage/login.html';
+        window.location.href = './pages/login.html';
     }
     
 }
