@@ -93,7 +93,10 @@ router.get('/:userId', async function(req, res) {
         const {transportationType, specificGender, date, activityType, location} = req.query
         let preferredGender = undefined
         if(specificGender === "true"){
-            preferredGender = userData.gender
+            preferredGender =userData.gender
+        }
+        else{
+            preferredGender = { $in: ['un', userData.gender] }
         }
         const activities = await activityCollManager.filteredActivities(userId,transportationType, preferredGender, date, activityType, location, userData.userUniversityName)
         res.send(activities)

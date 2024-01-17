@@ -12,9 +12,9 @@ class ActivityController {
           const location= $('#locationFilter').val()
           let activityType = undefined
           if (location != "" && to.is(":checked")) {
-            activityType = "fromSchool"
-          } else if(location != "" && from.is(":checked") ){
             activityType = "toSchool"
+          } else if(location != "" && from.is(":checked") ){
+            activityType = "fromSchool"
           }
             const filterData = {
                 transportationType: $('#transportationTypeFilter').val(),
@@ -39,9 +39,9 @@ class ActivityController {
           const to = $('#toSchool')
           let activityType = undefined
           if ( to.is(":checked")) {
-            activityType = "fromSchool"
-          } else {
             activityType = "toSchool"
+          } else {
+            activityType = "fromSchool"
           }
           const activityData = {
             date: $('#date').val(),

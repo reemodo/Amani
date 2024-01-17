@@ -1,4 +1,3 @@
-
 const TransportationIcons = { "Bus": "fa-bus", "Car": "fa-car" }
 const PreferredGenderText = { "f": "Female", "m": "Male", "un": "No Preferred Gender" }
 function changeText() {
@@ -21,7 +20,7 @@ function changeText() {
     }
   }
 
-  const USER_ID = 2
+  const USER_ID = 0
   const SUCCESS = "Your Activity was added, you can see it in My Activities page"
   function isEmpty(obj) {
       return Object.keys(obj).length === 0 && obj.constructor === Object
