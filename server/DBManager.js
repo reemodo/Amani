@@ -9,7 +9,7 @@ const users = require("./models/user")
 
 class DBManager{
     static connectToDB(){
-        mongoose.connect('mongodb://localhost/Amani-DB', { useNewUrlParser: true })
+        mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/Amani-DB', { useNewUrlParser: true })
     }
     static async generateData(){
         universities.forEach(async uni => {
