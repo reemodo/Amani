@@ -25,6 +25,7 @@ const SUCCESS = "Your Activity was added, you can see it in My Activities page"
 function isEmpty(obj) {
     return Object.keys(obj).length === 0 && obj.constructor === Object
 }
+let mybutton = $("#btn-back-to-top");
 
 window.onscroll = function () {
     scrollFunction();
@@ -43,6 +44,13 @@ function scrollFunction() {
 function backToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+}
+
+function login(){
+    const email = $("#login-mail").val()
+    const password = $("#login-password").val()
+
+    alert(`You tried to log in with the email ${email} unfortunatly login doesn't work yet`)
 }
 
 
