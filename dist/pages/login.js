@@ -5,3 +5,6 @@ const activityController = new ActivityController(activityModel, renderer)
 async function login(){
     await activityController.login()
 }
+async function register(){
+    await activityController.register()
+}
