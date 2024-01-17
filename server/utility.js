@@ -17,7 +17,7 @@ const filterActivityField = function(date, transportationType, preferredGender){
         return updateFields
 }
 
-const distance = async function(origin,destination){
+const getDistance = async function(origin,destination){
     
     const apiUrl = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin}&destinations=${destination}&key=${apiKey}`;
     try {
@@ -26,8 +26,8 @@ const distance = async function(origin,destination){
 
       if (data.status === 'OK') {
         const distance = data.rows[0].elements[0].distance.text;
-        const duration = data.rows[0].elements[0].duration.text;
-        document.getElementById('result').innerHTML = `Distance: ${distance}, Duration: ${duration}`;
+        // const duration = data.rows[0].elements[0].duration.text;
+        return distance;
       } else {
         return -1
       }
