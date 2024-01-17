@@ -35,11 +35,8 @@ async function init() {
     
 }
 
-//Get the button
-let mybutton = $("#btn-back-to-top");
-
 function isLogged(){
-    if(1 === 2)
+    if(1 === 1)
     {
         return true
     }

@@ -7,9 +7,10 @@ const activityCollManager = require('../collections-manager/activityCollManager'
 
 const consts = require('../../config')
 const userCollManager = require('../collections-manager/userCollManager')
+const Utilities = require('../utility')
 
 
-router.get('/DBgenerator', async function(req, res){
+router.get('/DBgenerator',Utilities.authenticateToken, async function(req, res){
     try{
         await DBManager.reGenerate()
         res.end()
@@ -21,7 +22,7 @@ router.get('/DBgenerator', async function(req, res){
 })
 
 
-router.get('/myActivities/:userId', async function(req, res) {
+router.get('/myActivities/:userId',Utilities.authenticateToken, async function(req, res) {
     try {
         const userId = req.params.userId
         const activities = await activityCollManager.myActivity(userId)
@@ -32,7 +33,7 @@ router.get('/myActivities/:userId', async function(req, res) {
     }
 })
 
-router.post('/:userId', async function(req, res){
+router.post('/:userId',Utilities.authenticateToken , async function(req, res){
     try{
         const userId = req.params.userId
         const userData = await userCollManager.getUserUniversityAndGender(userId)
@@ -49,7 +50,7 @@ router.post('/:userId', async function(req, res){
     }
 })
 
-router.get('/transportations', async function(req, res){
+router.get('/transportations',Utilities.authenticateToken , async function(req, res){
     try{
         res.status(200).send(consts.transportations)
     }
@@ -58,7 +59,7 @@ router.get('/transportations', async function(req, res){
     }
 })
 
-router.delete('/:activityId', async function(req, res){
+router.delete('/:activityId',Utilities.authenticateToken , async function(req, res){
     try{
         const activityId = req.params.activityId
         await activityCollManager.deleteActivity(activityId)
@@ -72,7 +73,7 @@ router.delete('/:activityId', async function(req, res){
 
 
 
-router.patch('/:activityId', async function(req, res){
+router.patch('/:activityId',Utilities.authenticateToken , async function(req, res){
     try{
         const activityId = req.params.activityId
         const capacity = req.body.capacity
@@ -86,7 +87,7 @@ router.patch('/:activityId', async function(req, res){
 })
 
 
-router.get('/:userId', async function(req, res) {
+router.get('/:userId',Utilities.authenticateToken , async function(req, res) {
     try {
         const userId = req.params.userId
         const userData = await userCollManager.getUserUniversityAndGender(userId)
@@ -98,7 +99,7 @@ router.get('/:userId', async function(req, res) {
         else{
             preferredGender = { $in: ['un', userData.gender] }
         }
-        const activities = await activityCollManager.filteredActivities(userId,transportationType, preferredGender, date, activityType, location, userData.userUniversityName)
+        const activities = await activityCollManager.filteredActivities(userId,transportationType, preferredGender, date, activityType, location, userData.universityName)
         res.send(activities)
     }
     catch (error) {
@@ -106,7 +107,7 @@ router.get('/:userId', async function(req, res) {
     }
 })
 
-router.get('/university/:userID', async function(req, res){
+router.get('/university/:userID',Utilities.authenticateToken , async function(req, res){
     try{
     const userId = req.params.userID
     const userUniversity = await userCollManager.getUserUniversity(userId)
@@ -116,7 +117,7 @@ router.get('/university/:userID', async function(req, res){
     }
 })
 
-router.get('/', async function(req, res) {
+router.get('/',Utilities.authenticateToken , async function(req, res) {
     try {
         const activities = await activityCollManager.getActivities()
         res.send(activities)
