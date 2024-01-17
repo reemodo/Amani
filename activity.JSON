@@ -1,7 +1,7 @@
 [
     {
         "userId":"0",
-        "universityName":"Harvard",
+        "universityName":"Sami shamoon",
         "date": "2024-02-12T00:00:00.000Z",
         "location":"Rahat",
         "transportationType":"Car",
@@ -12,7 +12,7 @@
     },
     {
         "userId":"0",
-        "universityName":"Harvard",
+        "universityName":"Ben gurion",
         "date": "2024-02-08T00:00:00.000Z",
         "location":"Arad",
         "transportationType":"Bus",
