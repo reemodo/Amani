@@ -3,8 +3,8 @@ const fs = require("fs")
 const User = require('./models/user')
 const University = require('./models/university')
 const Activity = require('./models/activity')
-const activities = require("../activity")
-const universities =require("../university")
+const activities = require("./models/activity")
+const universities =require("./models/university")
 const users = require("../user")
 
 class DBManager{
@@ -20,6 +20,7 @@ class DBManager{
             const newActivity = new Activity(activity)
             await newActivity.save()
         })
+        
         users.forEach(async user => {
             const newUser = new User(user)
             await newUser.save()
