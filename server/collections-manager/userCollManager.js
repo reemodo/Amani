@@ -25,10 +25,20 @@ class userCollManager{
     
 
     static async saveUser(user){
-        const newUser = new User(user)
+        const lastUser = await userCollManager.findTheLastUser()
+        const newUser = new User({
+            _id: (parseInt(lastUser[0]._id, 10) + 1).toString(),
+            ...user
+        })
         await newUser.save()
         return newUser
     }
+
+    static async findTheLastUser(){
+        const user = await User.find({}).sort({ _id: -1 }).limit(1)
+        return user
+    }
+
 }
 
 module.exports = userCollManager
