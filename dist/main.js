@@ -36,7 +36,9 @@ async function init() {
 }
 
 function isLogged(){
+
     if(localStorage.token)
+
     {
         return true
     }
