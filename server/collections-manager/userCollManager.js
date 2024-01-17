@@ -17,6 +17,13 @@ class userCollManager{
         const user = await User.findById(userId)
         return {universityName : user.universityName,gender : user.gender}
     }
+
+    static async findUserByMail(email){
+        const user = await User.findOne({"email" : email})
+        return user
+    }
+    
+
     static async saveUser(user){
         const lastUser = await userCollManager.findTheLastUser()
         const newUser = new User({
@@ -26,10 +33,12 @@ class userCollManager{
         await newUser.save()
         return newUser
     }
+
     static async findTheLastUser(){
         const user = await User.find({}).sort({ _id: -1 }).limit(1)
         return user
     }
+
 }
 
 module.exports = userCollManager

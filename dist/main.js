@@ -29,14 +29,16 @@ async function init() {
     {
         await activityController.filterActivities()
     }
-    else{
-        window.location.href = '/pages/login.html';
+   else{
+        window.location.href = './pages/login.html';
     }
     
 }
 
 function isLogged(){
-    if(1 === 1)
+
+    if(localStorage.token)
+
     {
         return true
     }
