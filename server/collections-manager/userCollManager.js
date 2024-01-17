@@ -18,7 +18,10 @@ class userCollManager{
         const user = await User.findById(userId)
         return {universityName : user.universityName,gender : user.gender}
     }
-
+    static async findUserByMail(email){
+        const user = await User.findOne({"email" : email})
+        return user
+    }
 
 }
 
