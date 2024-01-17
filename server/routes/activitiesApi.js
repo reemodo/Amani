@@ -98,7 +98,7 @@ router.get('/:userId', async function(req, res) {
         else{
             preferredGender = { $in: ['un', userData.gender] }
         }
-        const activities = await activityCollManager.filteredActivities(userId,transportationType, preferredGender, date, activityType, location, userData.userUniversityName)
+        const activities = await activityCollManager.filteredActivities(userId,transportationType, preferredGender, date, activityType, location, userData.universityName)
         res.send(activities)
     }
     catch (error) {
