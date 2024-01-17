@@ -1,5 +1,7 @@
+const activity = require('../models/activity')
 const Activity = require('../models/activity')
 const utilityFunctions = require("../utility")
+const userCollManager = require('./userCollManager')
 const filterActivityField = utilityFunctions.filterActivityField
 const filterAllActivityField = utilityFunctions.filterAllActivityField
 class activityCollManager{
@@ -55,7 +57,12 @@ class activityCollManager{
     static async filteredActivities(userId,transportationType, specificGender, date, activityType, location, universityName){
         const filter = filterAllActivityField(userId,transportationType, specificGender, date, activityType, location, universityName)
         const activities = await Activity.find(filter).sort({ date: 1 })
-        return activities
+        const newActivities = []
+        for (const activity of activities) {
+            const user = await userCollManager.findUserById(activity.userId)
+            newActivities.push({ ...activity._doc, telephone: user.phoneNumber })
+        }
+        return newActivities
     }
 
 }
