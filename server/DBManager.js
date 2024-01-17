@@ -20,6 +20,7 @@ class DBManager{
             const newActivity = new Activity(activity)
             await newActivity.save()
         })
+        
         users.forEach(async user => {
             const newUser = new User(user)
             await newUser.save()
