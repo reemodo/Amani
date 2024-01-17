@@ -20,7 +20,9 @@ function changeTextFilter() {
     }
 }
 
-const USER_ID = 0
+
+const USER_ID = localStorage.id 
+
 const SUCCESS = "Your Activity was added, you can see it in My Activities page"
 function isEmpty(obj) {
     return Object.keys(obj).length === 0 && obj.constructor === Object
@@ -46,12 +48,8 @@ function backToTop() {
     document.documentElement.scrollTop = 0;
 }
 
-function login(){
-    const email = $("#login-mail").val()
-    const password = $("#login-password").val()
 
-    alert(`You tried to log in with the email ${email} unfortunatly login doesn't work yet`)
-}
+
 function register(){
     let gender
     if($("#female-register").is(':checked')){

@@ -29,17 +29,16 @@ async function init() {
     {
         await activityController.filterActivities()
     }
-    else{
-        window.location.href = '/pages/login.html';
+   else{
+        window.location.href = './pages/login.html';
     }
     
 }
 
-//Get the button
-let mybutton = $("#btn-back-to-top");
-
 function isLogged(){
-    if(1 === 2)
+
+    if(localStorage.token)
+
     {
         return true
     }
