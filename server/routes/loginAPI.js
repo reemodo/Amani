@@ -49,14 +49,12 @@ router.post('/register', async function(req, res){
       const userData = req.body
       const user = await userCollManager.saveUser(userData)
       console.log(userData)
-      if (!user) {
-          return res.status(401).send({ message: 'Invalid username or password' });
-        }
+      
       const accessToken = generateAccessToken(user.toJSON());
       res.send({ accessToken , id : user.id });
   }
   catch (error) {
-      res.status(400).send(error)
+      res.status(401).send({ message: 'This email is already registered to an account' })
   }
 })
 

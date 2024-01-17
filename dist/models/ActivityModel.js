@@ -13,9 +13,9 @@ class ActivityModel {
             },
             error: function(error, textStatus, errorThrown) {
               if (error.status === 401) {
-                console.log('Unauthorized error:', errorThrown);
+                alert(error.responseJSON.message);
               } else {
-                console.log('Request failed:', errorThrown);
+                alert("Well, the server is down :(");
               }
             }
           });
@@ -38,9 +38,9 @@ class ActivityModel {
             },
             error: function(error, textStatus, errorThrown) {
               if (error.status === 401) {
-                console.log('Unauthorized error:', errorThrown);
+                alert(error.responseJSON.message);
               } else {
-                console.log('Request failed:', errorThrown);
+                alert("Well, the server is down :(")
               }
             }
           });
