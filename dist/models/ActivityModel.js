@@ -1,4 +1,29 @@
 class ActivityModel {
+    async register (user){
+        try {
+           await $.ajax({
+            url: "/register",
+            method: 'POST',
+            dataType: 'json',contentType: 'application/json',
+            data: JSON.stringify(user),
+            success: function(data) {
+                localStorage.setItem('token', data.accessToken);
+                localStorage.setItem('id', data.id)
+              window.location.href = '../index.html';
+            },
+            error: function(error, textStatus, errorThrown) {
+              if (error.status === 401) {
+                console.log('Unauthorized error:', errorThrown);
+              } else {
+                console.log('Request failed:', errorThrown);
+              }
+            }
+          });
+            
+         } catch (error) {
+             throw error
+         }
+    }
     async login (email, password){
         try {
            await $.ajax({

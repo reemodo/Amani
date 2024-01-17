@@ -20,7 +20,9 @@ function changeTextFilter() {
     }
 }
 
+
 const USER_ID = localStorage.id 
+
 const SUCCESS = "Your Activity was added, you can see it in My Activities page"
 function isEmpty(obj) {
     return Object.keys(obj).length === 0 && obj.constructor === Object
@@ -47,24 +49,6 @@ function backToTop() {
 }
 
 
- 
-function register(){
-    let gender
-    if($("#female-register").is(':checked')){
-        gender='f'
-    }
-    else{
-        gender = 'm'
-    }
-    const user={
-        name:$("#name-register").val(),
-        email:$("#email-register").val(),
-        password:$("#password-register").val(),
-        gender:gender,
-        universityName:$("#university-register").val(),
-        phone:$("#phone-register").val()
 
-    }
-    console.log(user)
-}
+
 

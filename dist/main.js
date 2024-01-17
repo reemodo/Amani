@@ -36,7 +36,9 @@ async function init() {
 }
 
 function isLogged(){
+
     if(localStorage.token)
+
     {
         return true
     }
@@ -44,6 +46,11 @@ function isLogged(){
     {
         return false
     }
+
+}
+function logOut(){
+    localStorage.removeItem('token')
+    window.location.href = '/';
 
 }
 init()

@@ -3,7 +3,25 @@ class ActivityController {
       this.model = model
       this.view = view
     }
+    async register(){
+      let gender
+      if($("#female-register").is(':checked')){
+          gender='f'
+      }
+      else{
+          gender = 'm'
+      }
+      const user={
+          name:$("#name-register").val(),
+          email:$("#email-register").val(),
+          password:$("#password-register").val(),
+          gender:gender,
+          universityName:$("#university-register").val(),
+          phone:$("#phone-register").val()
   
+      }
+      await this.model.register(user)
+    }
     async login (){
       const email = $('#login-mail').val()
       const password = $('#login-password').val()
@@ -57,9 +75,12 @@ class ActivityController {
             date: $('#date').val(),
             location: $('#location').val(),
             transportationType: $('#transportationType').val(),
-            capacity: $('#capacity').val(),
             gender: $('#gender').is(':checked'),
             activityType: activityType,
+          }
+          if(activityData.transportationType === "Car")
+          {
+            activityData.capacity = $('#capacity').val()
           }
           console.log(activityData.location)
           await this.model.addActivity(USER_ID, activityData)

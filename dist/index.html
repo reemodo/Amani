@@ -19,6 +19,7 @@
     <script src="./bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="styles/style.css" />
     <link rel="icon" type="image/x-icon" href="./logo/logo.png" />
+
   </head>
 
   <body>
@@ -89,6 +90,14 @@
                 href="#"
                 onclick="myActivity()"
                 >My activities</a
+              >
+            </li>
+             <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#"
+                onclick="logOut()"
+                >Logout</a
               >
             </li>
           </ul>
@@ -307,13 +316,14 @@
                 <span>{{#if capacity}}<b>Capacity:</b><input type="number" class="form-control sameLine" id="capacity-{{activityId}}" value="{{capacity}}"/>{{/if}}</span></div>
             <div><b>Preffered Gender:</b> {{genderText}}</div>
             <div class="right">
+              {{#if capacity}}
               <button
                 class="sendWhatsapp"
                 onclick="editActivity('{{activityId}}')"
               >
               <i class="fa-solid fa-pen-to-square"></i>
               </button>
-
+              {{/if}}
               <button
                 class="sendWhatsapp"
                 onclick="deleteActivity('{{activityId}}')"

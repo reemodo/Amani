@@ -44,6 +44,20 @@ router.post('/login', async function (req, res) {
 });
 const secretKey = 'my_secret_key';
 
-
+router.post('/register', async function(req, res){
+  try{
+      const userData = req.body
+      const user = await userCollManager.saveUser(userData)
+      console.log(userData)
+      if (!user) {
+          return res.status(401).send({ message: 'Invalid username or password' });
+        }
+      const accessToken = generateAccessToken(user.toJSON());
+      res.send({ accessToken , id : user.id });
+  }
+  catch (error) {
+      res.status(400).send(error)
+  }
+})
 
 module.exports = router;

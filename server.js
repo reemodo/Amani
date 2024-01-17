@@ -15,7 +15,6 @@ app.use(express.static(path.join(__dirname, 'node_modules')))
 
 app.use('/', loginRouter);
 app.use('/activities', api)
-app.use('/register', registerApi)
 
 const DBManager = require('./server/DBManager');
 DBManager.connectToDB()
