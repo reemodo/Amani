@@ -10,7 +10,7 @@ const addActivity = function () {
 async function filterActivity() {
     await activityController.filterActivities(filtered = true)
 }
-async function deleteActivity() {
+async function deleteActivity(activityID) {
     await activityController.deleteMyActivity(activityID)
 
 }
