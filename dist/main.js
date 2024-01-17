@@ -28,6 +28,9 @@ async function init() {
     await activityController.filterActivities()
 }
 
+//Get the button
+let mybutton = $("#btn-back-to-top");
+
 
 init()
 
