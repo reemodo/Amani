@@ -25,13 +25,30 @@ async function myActivity() {
 }
 
 async function init() {
-    await activityController.filterActivities()
+    if(isLogged())
+    {
+        await activityController.filterActivities()
+    }
+    else{
+        window.location.href = '/pages/login.html';
+    }
+    
 }
 
 //Get the button
 let mybutton = $("#btn-back-to-top");
 
+function isLogged(){
+    if(1 === 2)
+    {
+        return true
+    }
+    else
+    {
+        return false
+    }
 
+}
 init()
 
 
