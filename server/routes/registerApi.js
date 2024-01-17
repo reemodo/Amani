@@ -6,9 +6,13 @@ const userCollManager = require('../collections-manager/userCollManager')
 router.post('/', async function(req, res){
     try{
         const userData = req.body
-        await userCollManager.saveUser(userData)
+        const user = await userCollManager.saveUser(userData)
         console.log(userData)
-        res.status(200).end()
+        if (!user) {
+            return res.status(401).send({ message: 'Invalid username or password' });
+          }
+        const accessToken = generateAccessToken(user);
+        res.send({ accessToken , id : user.id });
     }
     catch (error) {
         res.status(400).send(error)

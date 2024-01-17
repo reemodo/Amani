@@ -3,7 +3,25 @@ class ActivityController {
       this.model = model
       this.view = view
     }
+    async register(){
+      let gender
+      if($("#female-register").is(':checked')){
+          gender='f'
+      }
+      else{
+          gender = 'm'
+      }
+      const user={
+          name:$("#name-register").val(),
+          email:$("#email-register").val(),
+          password:$("#password-register").val(),
+          gender:gender,
+          universityName:$("#university-register").val(),
+          phone:$("#phone-register").val()
   
+      }
+      await this.model.register(user)
+    }
     async login (){
       const email = $('#login-mail').val()
       const password = $('#login-password').val()
