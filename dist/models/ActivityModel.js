@@ -98,10 +98,10 @@ class ActivityModel {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
             success: function(response) {
-                alert("Your activity has successfully added.")
+                return response
               },
               error: function(error) {
-                alert("Couldn't add the activity.")
+                return error
               }
           })
            
@@ -116,6 +116,7 @@ class ActivityModel {
             const data = await $.ajax({
                 url: `/activities/myActivities/${userId}`,
                 type: 'GET',
+                contentType: 'application/json',
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 },
@@ -137,7 +138,10 @@ class ActivityModel {
         await $.ajax({
             url: `/activities/${activityId}`,
             type: 'DELETE',
-            data: { userId },
+            contentType: 'application/json',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
             success: function() {
                return true
             },
@@ -156,6 +160,9 @@ class ActivityModel {
             type: 'PATCH',
             contentType: 'application/json',
             data: JSON.stringify({ userId,"capacity": newCapacity }),
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
             success: function(response) {
                 alert("Your capacity has successfully changed.")
               },
