@@ -1,4 +1,6 @@
 const consts = require("../config")
+const jwt = require('jsonwebtoken');
+const secretKey = 'my_secret_key';
 const filterActivityField = function(date, transportationType, preferredGender){
     const updateFields = {}
     

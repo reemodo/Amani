@@ -4,7 +4,12 @@ class ActivityController {
       this.view = view
     }
   
+    async login (){
+      const email = $('#login-mail').val()
+      const password = $('#login-password').val()
+      await this.model.login(email, password)
 
+    }
     async filterActivities(filtered = false) {
         try {
           const to = $('#toSchoolFilter')

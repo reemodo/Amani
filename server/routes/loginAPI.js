@@ -40,7 +40,7 @@ router.post('/login', async function (req, res) {
     return res.status(401).send({ message: 'Invalid username or password' });
   }
   const accessToken = generateAccessToken(user);
-  res.send({ accessToken });
+  res.send({ accessToken , id : user.id });
 });
 const secretKey = 'my_secret_key';
 
