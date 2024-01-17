@@ -57,10 +57,10 @@ class ActivityModel {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                   },
-                success: function() {
-                   return true
+                success: function(data) {
+                   return data
                 },              
-                error: function(xhr, status, error) {
+                error: function(error) {
                     console.error(error)
                 }
             })
