@@ -5,7 +5,7 @@ const University = require('./models/university')
 const Activity = require('./models/activity')
 const activities = require("./models/activity")
 const universities =require("./models/university")
-const users = require("../user")
+const users = require("./models/user")
 
 class DBManager{
     static connectToDB(){
