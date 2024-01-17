@@ -1,9 +1,19 @@
 class ActivityModel {
+
+    async getUserUniversity(userId) {
+        try {
+            return await $.get(`activities/university/${userId}`)
+        } catch (error) {
+            throw error
+        }
+    }
+
     async getAllActivities(userId,filtered, filterData) {
         try {
-            
+            const universityName = await this.getUserUniversity(userId)
           if(filtered){
             //return await $.get(`/activities/${userId}?${$.param(filterData)}` )
+            filterData.universityName = universityName
             return await $.ajax({
                 url: `/activities/${userId}?${$.param(filterData)}`,
                 type: 'GET',

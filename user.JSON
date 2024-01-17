@@ -7,7 +7,7 @@
         "phoneNumber":"972547850348",
         "name":"Sujood",
         "location":"Arad",
-        "universityName":"Harvard"
+        "universityName":"Ben gurion"
     },
     {
         "_id":"1",
@@ -27,6 +27,6 @@
         "phoneNumber":"972526457991",
         "name":"Noor",
         "location":"Rahat",
-        "universityName":"Harvard"
+        "universityName":"Sami shamoon"
     }
 ] 
