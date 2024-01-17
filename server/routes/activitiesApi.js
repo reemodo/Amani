@@ -21,7 +21,6 @@ router.get('/DBgenerator', async function(req, res){
     }
 })
 
-
 router.get('/myActivities/:userId',Utilities.authenticateToken, async function(req, res) {
     try {
         const userId = req.params.userId
