@@ -17,7 +17,7 @@ class ActivityController {
           password:$("#password-register").val(),
           gender:gender,
           universityName:$("#university-register").val(),
-          phone:$("#phone-register").val()
+          phoneNumber:"972"+$("#phone-register").val().slice(1)
   
       }
       await this.model.register(user)
