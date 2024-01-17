@@ -3,9 +3,9 @@ const fs = require("fs")
 const User = require('./models/user')
 const University = require('./models/university')
 const Activity = require('./models/activity')
-const activities = require("./models/activity")
-const universities =require("./models/university")
-const users = require("./models/user")
+const activities = require("../activity")
+const universities =require("../university")
+const users = require("../user")
 
 class DBManager{
     static connectToDB(){

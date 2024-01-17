@@ -10,7 +10,7 @@ const userCollManager = require('../collections-manager/userCollManager')
 const Utilities = require('../utility')
 
 
-router.get('/DBgenerator',Utilities.authenticateToken, async function(req, res){
+router.get('/DBgenerator', async function(req, res){
     try{
         await DBManager.reGenerate()
         res.end()
