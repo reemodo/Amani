@@ -106,6 +106,16 @@ router.get('/:userId', async function(req, res) {
     }
 })
 
+router.get('/university/:userID', async function(req, res){
+    try{
+    const userId = req.params.userID
+    const userUniversity = await userCollManager.getUserUniversity(userId)
+    res.status(200).send(userUniversity)
+    }catch(err){
+        res.status(400).send(err)
+    }
+})
+
 router.get('/', async function(req, res) {
     try {
         const activities = await activityCollManager.getActivities()
