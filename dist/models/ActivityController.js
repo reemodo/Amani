@@ -16,6 +16,8 @@ class ActivityController {
           } else if(location != "" && from.is(":checked") ){
             activityType = "fromSchool"
           }
+          const universityName = await this.model.getUserUniversity(USER_ID)
+
             const filterData = {
                 transportationType: $('#transportationTypeFilter').val(),
                 specificGender: $('#genderFilter').is(':checked'),
@@ -24,9 +26,12 @@ class ActivityController {
                 activityType: activityType,
 
             }
+
+            filterData.universityName = universityName
+
             const allActivities = await this.model.getAllActivities(USER_ID, filtered,filterData)
             const activities = allActivities.map(activityData => new Activity(activityData))
-            const modalData = {transportation:["Bus","Car"], university:"Harvard"}
+            const modalData = {transportation:["Bus","Car"], university:universityName}
             this.view.renderPage(activities,modalData)
         } catch (error) {
             console.error('Error filtering or fetching activities:', error)
@@ -62,9 +67,11 @@ class ActivityController {
 
     async showMyActivities() {
         try {
+            const universityName = await this.model.getUserUniversity(USER_ID)
             const myActivities = await this.model.showMyActivities(USER_ID)
             const activities = myActivities.map(activityData => new Activity(activityData))
-            const modalData = {transportation:["Bus","Car"], university:"Harvard"}
+            console.log(universityName)
+            const modalData = {transportation:["Bus","Car"], university:universityName}
             this.view.renderMyPage(activities,modalData)
 
         } catch (error) {
