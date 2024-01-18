@@ -84,7 +84,6 @@ class ActivityController {
           }
           await this.model.addActivity(USER_ID, activityData)
           this.view.handleSuccess(SUCCESS)
-          await this.showMyActivities()
         } catch (error) {
           this.view.handleError(error)
           console.error('Error adding activity:', error)
