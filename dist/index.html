@@ -91,7 +91,9 @@
                 onclick="myActivity()"
                 >My activities</a
               >
-            </li>
+              </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
              <li class="nav-item">
               <a
                 class="nav-link"
@@ -314,7 +316,7 @@
             <div class="Line"><span><b>Transportation:</b>
               <i class="fa-solid {{icon}}"></i></span>
                 <span>{{#if capacity}}<b>Capacity:</b><input type="number" class="form-control sameLine" id="capacity-{{activityId}}" value="{{capacity}}"/>{{/if}}</span></div>
-            <div><b>Preffered Gender:</b> {{genderText}}</div>
+            <div><b>Preferred Gender:</b> {{genderText}}</div>
             <div class="right">
               {{#if capacity}}
               <button
